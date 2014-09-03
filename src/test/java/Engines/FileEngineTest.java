@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class FileEngineTest extends TestCase {
 	private final String filename = "./test-file.txt";
-	private final String contents = "text to test.";
+	private final String contents = "Text to test.\nAnother line.";
 
 	private FileEngine engine;
 

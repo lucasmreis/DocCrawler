@@ -11,42 +11,49 @@ public class CrawledDocBuilder {
 	private String link;
 	private String source;
 
-	public CrawledDocBuilder setId_document(String id_document) {
+	private CrawledDocBuilder() {
+	}
+
+	public static CrawledDocBuilder newCrawledDoc() {
+		return new CrawledDocBuilder();
+	}
+
+	public CrawledDocBuilder withId_document(String id_document) {
 		this.id_document = id_document;
 		return this;
 	}
 
-	public CrawledDocBuilder setTitle(String title) {
+	public CrawledDocBuilder withTitle(String title) {
 		this.title = title;
 		return this;
 	}
 
-	public CrawledDocBuilder setContent(String content) {
+	public CrawledDocBuilder withContent(String content) {
 		this.content = content;
 		return this;
 	}
 
-	public CrawledDocBuilder setAuthor(String author) {
+	public CrawledDocBuilder withAuthor(String author) {
 		this.author = author;
 		return this;
 	}
 
-	public CrawledDocBuilder setDate(DateTime date) {
+	public CrawledDocBuilder withDate(DateTime date) {
 		this.date = date;
 		return this;
 	}
 
-	public CrawledDocBuilder setLink(String link) {
+	public CrawledDocBuilder withLink(String link) {
 		this.link = link;
 		return this;
 	}
 
-	public CrawledDocBuilder setSource(String source) {
+	public CrawledDocBuilder withSource(String source) {
 		this.source = source;
 		return this;
 	}
 
-	public CrawledDoc createCrawledDoc() {
+	public CrawledDoc create() {
 		return new CrawledDoc(id_document, title, content, author, date, link, source);
 	}
 }
