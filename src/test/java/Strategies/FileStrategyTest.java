@@ -39,7 +39,7 @@ public class FileStrategyTest extends TestCase {
 	}
 
 	@Test
-	public void testFileStrategyIsWorking() {
+	public void testFileStrategyIsWorking() throws IOException {
 		strategy.getCrawledDocs()
 				.forEach(d -> {
 					assertThat(d).isNotNull();

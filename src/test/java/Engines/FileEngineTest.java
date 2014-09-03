@@ -23,7 +23,7 @@ public class FileEngineTest extends TestCase {
 
 		assertThat(Files.exists(Paths.get(filename))).isTrue();
 
-		engine = new FileEngine(filename);
+		engine = new FileEngine();
 	}
 
 	private void createTestFile() throws IOException {
@@ -32,7 +32,7 @@ public class FileEngineTest extends TestCase {
 
 	@Test
 	public void testFileEngineGetCrawledDocMustWorkWithDummyTextFile() throws Exception {
-		CrawledDoc actual = engine.getCrawledDoc();
+		CrawledDoc actual = engine.getCrawledDoc(filename);
 
 		assertThat(actual).isNotNull();
 		assertThat(actual).isOfAnyClassIn(CrawledDoc.class);
