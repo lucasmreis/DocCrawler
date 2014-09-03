@@ -1,3 +1,5 @@
+package Models;
+
 import org.joda.time.DateTime;
 
 public class CrawledDocBuilder {
