@@ -1,7 +1,5 @@
-package Strategies;
+package Helpers;
 
-import Engines.FileEngine;
-import Models.CrawledDoc;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -10,16 +8,17 @@ import org.junit.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FileStrategyTest extends TestCase {
+public class PathHelperTest extends TestCase {
 	String path = "./test-files-dir/";
 	List<String> filenames = Arrays.asList(path + "test1.txt", path + "test2.txt", path + "test.pdf");
 	String contents = "Text to test.\nAnother line.";
-	FileStrategy strategy;
 
 	@Before
 	public void setUp() throws IOException {
@@ -42,26 +41,13 @@ public class FileStrategyTest extends TestCase {
 	}
 
 	@Test
-	public void testFileStrategyIsWorking() throws IOException {
-		strategy = new FileStrategy(path, "1");
-		List<CrawledDoc> docs = strategy.getCrawledDocs();
-		assertThat(docs.size()).isEqualTo(2);
-		docs.forEach(d -> {
-					assertThat(d).isNotNull();
-					assertThat(d).isOfAnyClassIn(CrawledDoc.class);
-					assertThat(d.getContent()).isEqualTo(contents);
-				});
-	}
+	public void testHelperHasToRetriveAllPaths() throws IOException {
+		PathHelper helper = new PathHelper();
+		List<Path> paths = helper.getValidPaths(Paths.get(path));
+		assertThat(paths).hasSize(3);
 
-	@Test
-	public void testFileStrategyOnlyWorksWithTextFiles() throws IOException {
-		strategy = new FileStrategy(path, "1");
-		List<CrawledDoc> docs = strategy.getCrawledDocs();
-		assertThat(docs.size()).isEqualTo(2);
-		docs.forEach(d -> {
-				assertThat(d.getLink()).endsWith(".txt");
-				assertThat(d.getContent()).isEqualTo(contents);
-			});
+		String firstFile = (String)filenames.toArray()[0];
+		assertThat(Paths.get(firstFile)).isIn(paths);
 	}
 
 	@After
