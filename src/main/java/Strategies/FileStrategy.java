@@ -27,7 +27,7 @@ public class FileStrategy implements IConvertingStrategy {
 		FileEngine engine = new FileEngine();
 		List<Path> paths = new PathHelper().getValidPaths(Paths.get(path));
 		return paths.stream()
-				.filter(p -> p.endsWith(".txt"))
+				.filter(p -> p.toString().endsWith(".txt"))
 				.map(p -> engine.getCrawledDoc(p.toString()))
 				.collect(Collectors.toList());
 	}
