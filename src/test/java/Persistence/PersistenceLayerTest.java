@@ -4,7 +4,6 @@ import Models.CrawledDoc;
 import Models.CrawledDocBuilder;
 import junit.framework.TestCase;
 import org.joda.time.DateTime;
-import org.junit.After;
 import org.junit.Test;
 
 import java.sql.Connection;

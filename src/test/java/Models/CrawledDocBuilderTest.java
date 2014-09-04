@@ -14,5 +14,6 @@ public class CrawledDocBuilderTest extends TestCase {
 		assertThat(created).isNotNull();
 		assertThat(created).isOfAnyClassIn(CrawledDoc.class);
 		assertThat(created.getContent()).isEqualTo("test content");
+		assertThat(created.getId_document()).isNotNull();
 	}
 }
