@@ -2,6 +2,8 @@ package Models;
 
 import org.joda.time.DateTime;
 
+import java.util.UUID;
+
 public class CrawledDocBuilder {
 	private String id_document;
 	private String title;
@@ -54,6 +56,8 @@ public class CrawledDocBuilder {
 	}
 
 	public CrawledDoc create() {
+		if (id_document == null || id_document.isEmpty())
+			id_document = String.valueOf(UUID.randomUUID()).substring(0, 31);
 		return new CrawledDoc(id_document, title, content, author, date, link, source);
 	}
 }

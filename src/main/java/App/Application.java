@@ -19,16 +19,23 @@ public class Application {
 			System.out.println("Invalid source: " + args[0]);
 			return;
 		}
+		ArrayList<String> ids = crawlAndSave(strategy);
+		System.out.println("Crawled!\nDocuments inserted:");
+		ids.forEach(i -> System.out.println(i));
+	}
 
-		ArrayList<CrawledDoc> docs;
+	public static ArrayList<String> crawlAndSave(IConvertingStrategy strategy)
+	{
 		try {
+			ArrayList<CrawledDoc> docs;
+
 			docs = strategy.getCrawledDocs();
 
 			// pequeno teste: digitar gradle run -Pargs="file ./ 1"
 			System.out.println(docs.get(0).getContent());
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return new ArrayList<>();
 	}
 }
