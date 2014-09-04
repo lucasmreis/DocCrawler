@@ -11,8 +11,8 @@ import java.util.List;
  * Created by lucasmreis on 9/3/14.
  */
 public class PathHelper {
-	public List<Path> getValidPaths(Path path) throws IOException {
-		List<Path> paths = new ArrayList<Path>();
+	public ArrayList<Path> getValidPaths(Path path) throws IOException {
+		ArrayList<Path> paths = new ArrayList<>();
 		DirectoryStream dir = Files.newDirectoryStream(path);
 		for (Object o : dir)
 		{

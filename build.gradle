@@ -9,6 +9,15 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'App.Application'
+
+run {
+    if(project.hasProperty('args')) {
+        args project.args.split(' ')
+    }
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {

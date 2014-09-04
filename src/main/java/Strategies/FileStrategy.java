@@ -7,7 +7,7 @@ import Helpers.PathHelper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 /**
@@ -23,12 +23,12 @@ public class FileStrategy implements IConvertingStrategy {
 		this.depth = Integer.parseInt(depth);
 	}
 
-	public List<CrawledDoc> getCrawledDocs() throws IOException {
+	public ArrayList<CrawledDoc> getCrawledDocs() throws IOException {
 		FileEngine engine = new FileEngine();
-		List<Path> paths = new PathHelper().getValidPaths(Paths.get(path));
+		ArrayList<Path> paths = new PathHelper().getValidPaths(Paths.get(path));
 		return paths.stream()
 				.filter(p -> p.toString().endsWith(".txt"))
 				.map(p -> engine.getCrawledDoc(p.toString()))
-				.collect(Collectors.toList());
+				.collect(Collectors.toCollection(ArrayList::new));
 	}
 }
