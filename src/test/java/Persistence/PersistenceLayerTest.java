@@ -33,7 +33,7 @@ public class PersistenceLayerTest extends TestCase {
 	}
 
 	@Test
-	public void testPersistenceHasToAddProperly() throws SQLException {
+	public void testPersistenceHasToAddProperly() throws SQLException, ClassNotFoundException {
 		CrawledDoc doc = CrawledDocBuilder.newCrawledDoc()
 				.withAuthor("author")
 				.withContent("content")

@@ -12,22 +12,28 @@ import java.sql.Statement;
  * Created by lucasmreis on 9/4/14.
  */
 public class PersistenceLayer {
-	public String Add(CrawledDoc doc) throws SQLException {
+	public String Add(CrawledDoc doc) throws SQLException, ClassNotFoundException {
 		String dbURL = "jdbc:mysql://localhost:3306/crawler";
-		String username ="root";
-		String password = "root";
+		String username ="newuser";
+		String password = "password";
 
-		Connection dbCon = null;
-		Statement stmt = null;
-		ResultSet rs = null;
+		Connection dbCon;
+		Statement stmt;
+		int rs;
 
-		String query = insertQuery(doc);
+		String insertQuery = insertQuery(doc);
 
-		//dbCon = DriverManager.getConnection(dbURL, username, password);
+		Class.forName("com.mysql.jdbc.Driver");
 
+		dbCon = DriverManager.getConnection(dbURL, username, password);
+		stmt = dbCon.prepareStatement(insertQuery);
+		rs = stmt.executeUpdate(insertQuery);
 
+		String result = (rs > 0) ? doc.getId_document() : null;
 
-		return null; // TODO: return id_document if successful.
+		stmt.close();
+		dbCon.close();
+		return result;
 	}
 
 	public String insertQuery(CrawledDoc doc)
