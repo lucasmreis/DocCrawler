@@ -26,6 +26,11 @@ public class RssStrategy implements IConvertingStrategy {
 
 		ArrayList<SyndEntry> entries = (ArrayList<SyndEntry>) feed.getEntries();
 
-		return new ArrayList<>();
+		ArrayList<CrawledDoc> docs = new ArrayList<>();
+		for (int i = 0; i < 10; i++)
+		{
+
+		}
+		return docs;
 	}
 }
