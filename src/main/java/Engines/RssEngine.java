@@ -19,7 +19,7 @@ public class RssEngine {
 				.withLink(entry.getLink())
 				.withTitle(entry.getTitle())
 				.withContent(StringEscapeUtils.escapeHtml4(entry.getDescription().getValue().toString()))
-				.withDate(new DateTime())
+				.withDate(new DateTime(entry.getPublishedDate()))
 				.create();
 	}
 
