@@ -4,6 +4,7 @@ import Models.CrawledDoc;
 import Persistence.PersistenceLayer;
 import Strategies.FileStrategy;
 import Strategies.IConvertingStrategy;
+import Strategies.RssStrategy;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,11 +16,16 @@ import java.util.ArrayList;
 public class Application {
 	public static void main(String [] args) {
 		IConvertingStrategy strategy;
-		if (args[0].equals("file"))
-			strategy = new FileStrategy(args[1], args[2]);
-		else {
-			System.out.println("Invalid source: " + args[0]);
-			return;
+		switch (args[0]) {
+			case "file":
+				strategy = new FileStrategy(args[1], args[2]);
+				break;
+			case "rss":
+				strategy = new RssStrategy(args[1]);
+				break;
+			default:
+				System.out.println("Invalid source: " + args[0]);
+				return;
 		}
 		PersistenceLayer db = new PersistenceLayer();
 		ArrayList<String> ids = crawlAndSave(strategy, db);
@@ -40,6 +46,7 @@ public class Application {
 				ids.add(db.Add(doc));
 			}
 			// pequeno teste: digitar gradle run -Pargs="file ./ 1"
+			//
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
