@@ -34,6 +34,7 @@ dependencies {
     compile 'joda-time:joda-time:2.4'
     compile 'mysql:mysql-connector-java:5.1.13'
     compile 'rome:rome:1.0'
+    compile 'org.apache.commons:commons-lang3:3.0'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the

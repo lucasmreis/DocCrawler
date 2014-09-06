@@ -28,28 +28,29 @@ public class Application {
 				return;
 		}
 		PersistenceLayer db = new PersistenceLayer();
-		ArrayList<String> ids = crawlAndSave(strategy, db);
-		System.out.println("Crawled!\nDocuments inserted:");
-		ids.forEach(i -> System.out.println(i));
-	}
-
-	public static ArrayList<String> crawlAndSave(IConvertingStrategy strategy, PersistenceLayer db)
-	{
-		ArrayList<String> ids = new ArrayList<>();
+		ArrayList<String> ids = null;
 		try {
-			ArrayList<CrawledDoc> docs;
-
-			docs = strategy.getCrawledDocs();
-
-			for (CrawledDoc doc : docs)
-			{
-				ids.add(db.Add(doc));
-			}
-			// pequeno teste: digitar gradle run -Pargs="file ./ 1"
-			//
+			ids = crawlAndSave(strategy, db);
+			System.out.println("Crawled!\nDocuments inserted:");
+			ids.forEach(i -> System.out.println(i));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static ArrayList<String> crawlAndSave(IConvertingStrategy strategy, PersistenceLayer db) throws Exception {
+		ArrayList<String> ids = new ArrayList<>();
+
+		ArrayList<CrawledDoc> docs;
+
+		docs = strategy.getCrawledDocs();
+
+		for (CrawledDoc doc : docs)
+		{
+			ids.add(db.Add(doc));
+		}
+		// pequeno teste: digitar gradle run -Pargs="file ./ 1"
+		//
 		return ids;
 	}
 }

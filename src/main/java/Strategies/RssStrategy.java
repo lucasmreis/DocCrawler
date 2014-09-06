@@ -34,7 +34,7 @@ public class RssStrategy implements IConvertingStrategy {
 
 		ArrayList<CrawledDoc> docs = new ArrayList<>();
 		RssEngine engine = new RssEngine();
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < Math.min(entries.size(), 10); i++)
 		{
 			docs.add(engine.getCrawledDoc(entries.get(i)));
 		}

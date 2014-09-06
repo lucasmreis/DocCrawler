@@ -26,17 +26,17 @@ public class CrawledDocBuilder {
 	}
 
 	public CrawledDocBuilder withTitle(String title) {
-		this.title = title;
+		this.title = title.substring(0, Math.min(title.length(), 799));
 		return this;
 	}
 
 	public CrawledDocBuilder withContent(String content) {
-		this.content = content;
+		this.content = content.substring(0, Math.min(content.length(), 21799));
 		return this;
 	}
 
 	public CrawledDocBuilder withAuthor(String author) {
-		this.author = author;
+		this.author = author.substring(0, Math.min(author.length(), 399));
 		return this;
 	}
 
@@ -46,12 +46,12 @@ public class CrawledDocBuilder {
 	}
 
 	public CrawledDocBuilder withLink(String link) {
-		this.link = link;
+		this.link = link.substring(0, Math.min(link.length(), 799));
 		return this;
 	}
 
 	public CrawledDocBuilder withSource(String source) {
-		this.source = source;
+		this.source = source.substring(0, Math.min(source.length(), 399));
 		return this;
 	}
 

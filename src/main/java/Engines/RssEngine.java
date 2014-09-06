@@ -2,13 +2,10 @@ package Engines;
 
 import Models.CrawledDoc;
 import Models.CrawledDocBuilder;
-import com.sun.syndication.feed.synd.SyndContent;
-import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndEntryImpl;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.joda.time.DateTime;
 
-import java.util.Optional;
 
 /**
  * Created by lucasmreis on 9/5/14.
@@ -16,17 +13,24 @@ import java.util.Optional;
 public class RssEngine {
 	public CrawledDoc getCrawledDoc(SyndEntry entry)
 	{
-		Optional<SyndContent> content = entry.getContents().stream()
-				.filter(c -> ((SyndContentImpl)c).getType().equals("text/plain"))
-				.findFirst();
-
 		return CrawledDocBuilder.newCrawledDoc()
 				.withSource("Rss Feed")
 				.withAuthor(entry.getAuthor())
 				.withLink(entry.getLink())
 				.withTitle(entry.getTitle())
-				.withContent(content.isPresent() ? content.get().getValue() : "< no contents >")
+				.withContent(StringEscapeUtils.escapeHtml4(entry.getDescription().getValue().toString()))
 				.withDate(new DateTime())
 				.create();
 	}
+
+//	private String FirstContentValue(ArrayList<SyndContentImpl> contents, String type)
+//	{
+//		String noContents = "< no contents >";
+//		if (contents.isEmpty()) return noContents;
+//		for (SyndContentImpl c : contents)
+//		{
+//			if (c.getType().contains(type)) return c.getValue().toString();
+//		}
+//		return noContents;
+//	}
 }
