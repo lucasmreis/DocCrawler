@@ -1,10 +1,12 @@
 package App;
 
 import Models.CrawledDoc;
+import Persistence.PersistenceLayer;
 import Strategies.FileStrategy;
 import Strategies.IConvertingStrategy;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -19,23 +21,28 @@ public class Application {
 			System.out.println("Invalid source: " + args[0]);
 			return;
 		}
-		ArrayList<String> ids = crawlAndSave(strategy);
+		PersistenceLayer db = new PersistenceLayer();
+		ArrayList<String> ids = crawlAndSave(strategy, db);
 		System.out.println("Crawled!\nDocuments inserted:");
 		ids.forEach(i -> System.out.println(i));
 	}
 
-	public static ArrayList<String> crawlAndSave(IConvertingStrategy strategy)
+	public static ArrayList<String> crawlAndSave(IConvertingStrategy strategy, PersistenceLayer db)
 	{
+		ArrayList<String> ids = new ArrayList<>();
 		try {
 			ArrayList<CrawledDoc> docs;
 
 			docs = strategy.getCrawledDocs();
 
+			for (CrawledDoc doc : docs)
+			{
+				ids.add(db.Add(doc));
+			}
 			// pequeno teste: digitar gradle run -Pargs="file ./ 1"
-			System.out.println(docs.get(0).getContent());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<>();
+		return ids;
 	}
 }
