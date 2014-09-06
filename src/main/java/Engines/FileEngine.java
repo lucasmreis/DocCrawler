@@ -14,16 +14,11 @@ import java.util.stream.Collectors;
  * Created by lucasmreis on 9/3/14.
  */
 public class FileEngine {
-	public CrawledDoc getCrawledDoc(String path) {
+	public CrawledDoc getCrawledDoc(String path) throws IOException {
 		String contents;
-		try {
-			contents = Files
-					.lines(Paths.get(path))
-					.collect(Collectors.joining("\n"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+		contents = Files
+				.lines(Paths.get(path))
+				.collect(Collectors.joining("\n"));
 
 		return CrawledDocBuilder.newCrawledDoc()
 				.withSource("Local File")

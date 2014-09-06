@@ -28,9 +28,12 @@ public class FileStrategy implements IConvertingStrategy {
 		ArrayList<Path> paths = null;
 		paths = new PathHelper().getValidPaths(Paths.get(path));
 
-		return paths.stream()
-				.filter(p -> p.toString().endsWith(".txt")) // TODO: worst way of solving it!
-				.map(p -> engine.getCrawledDoc(p.toString()))
-				.collect(Collectors.toCollection(ArrayList::new));
+		ArrayList<CrawledDoc> docs = new ArrayList<>();
+		for (Path p : paths)
+		{
+			if (p.toString().endsWith(".txt")) // TODO: worst way of solving it!
+				docs.add(engine.getCrawledDoc(p.toString()));
+		}
+		return docs;
 	}
 }

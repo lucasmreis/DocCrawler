@@ -42,3 +42,30 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.assertj:assertj-core:1.6.1'
 }
+
+
+// Add the dependencies to the project.
+idea.project.ipr {
+    beforeMerged { project ->
+        project.modulePaths.clear()
+    }
+}
+
+idea.module.iml {
+    withXml {
+        it.node.@type = "PLUGIN_MODULE"
+    }
+}
+
+task setup {
+    dependsOn ideaModule, ideaProject
+    doLast {
+        copy {
+            from '.'
+            into '.idea/'
+            include '*.ipr'
+            rename { "modules.xml" }
+        }
+        project.delete "${project.name}.ipr"
+    }
+}

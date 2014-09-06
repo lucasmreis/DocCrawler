@@ -24,7 +24,7 @@ public class RssStrategy implements IConvertingStrategy {
 		SyndFeedInput input = new SyndFeedInput();
 		SyndFeed feed = input.build(new XmlReader(feedUrl));
 
-		//ArrayList<SyndEntry> entries = feed.getCachedSyndFeed().getEntries();
+		ArrayList<SyndEntry> entries = (ArrayList<SyndEntry>) feed.getEntries();
 
 		return new ArrayList<>();
 	}
