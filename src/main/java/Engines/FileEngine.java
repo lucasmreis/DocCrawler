@@ -3,7 +3,6 @@ package Engines;
 import Models.CrawledDoc;
 import Models.CrawledDocBuilder;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 
 import java.io.IOException;
 import java.nio.file.Files;

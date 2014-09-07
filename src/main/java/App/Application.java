@@ -3,6 +3,7 @@ package App;
 import Models.CrawledDoc;
 import Persistence.PersistenceLayer;
 import Strategies.FileStrategy;
+import Strategies.GmailStrategy;
 import Strategies.IConvertingStrategy;
 import Strategies.RssStrategy;
 
@@ -22,6 +23,9 @@ public class Application {
 				break;
 			case "rss":
 				strategy = new RssStrategy(args[1]);
+				break;
+			case "gmail":
+				strategy = new GmailStrategy(args[1], args[2]);
 				break;
 			default:
 				System.out.println("Invalid source: " + args[0]);
