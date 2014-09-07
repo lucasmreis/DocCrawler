@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import Models.CrawledDoc;
 import junit.framework.TestCase;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
