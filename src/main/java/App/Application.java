@@ -2,10 +2,7 @@ package App;
 
 import Models.CrawledDoc;
 import Persistence.PersistenceLayer;
-import Strategies.FileStrategy;
-import Strategies.GmailStrategy;
-import Strategies.IConvertingStrategy;
-import Strategies.RssStrategy;
+import Strategies.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,6 +24,8 @@ public class Application {
 			case "gmail":
 				strategy = new GmailStrategy(args[1], args[2]);
 				break;
+			case "html":
+				strategy = new HtmlStrategy(args[0], args[1]);
 			default:
 				System.out.println("Invalid source: " + args[0]);
 				return;

@@ -1,5 +1,6 @@
 package Strategies;
 
+import Engines.HtmlEngine;
 import Models.CrawledDoc;
 
 import Models.CrawledDocBuilder;
@@ -22,24 +23,9 @@ public class HtmlStrategy implements IConvertingStrategy {
 	}
 
 	public ArrayList<CrawledDoc> getCrawledDocs() throws Exception {
-		Document page = Jsoup.connect(this.url).get();
-
-		Optional<String> author = page.getElementsByTag("meta").stream()
-				.filter(e -> e.attr("name").equals("author"))
-				.map(e -> e.attr("content"))
-				.findFirst();
-
-		CrawledDoc doc = CrawledDocBuilder.newCrawledDoc()
-				.withSource("Html")
-				.withTitle(page.title())
-				.withAuthor(author.isPresent() ? author.get() : "< no author >")
-				.withLink(page.baseUri())
-				.withContent(page.body().text())
-				.withDate(DateTime.now())
-				.create();
-
+		HtmlEngine engine = new HtmlEngine();
 		ArrayList<CrawledDoc> docs = new ArrayList<>();
-		docs.add(doc);
+		docs.add(engine.getCrawledDoc(this.url));
 		return docs;
 	}
 }
