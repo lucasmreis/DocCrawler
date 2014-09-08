@@ -4,6 +4,7 @@ import Models.CrawledDoc;
 import Models.CrawledDocBuilder;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.joda.time.DateTime;
+import org.jsoup.Jsoup;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -16,12 +17,15 @@ import java.io.IOException;
  */
 public class GmailEngine {
 	public CrawledDoc getCrawledDoc(Message message) throws MessagingException, IOException {
+		String rawContent = getText(message);
+		String content = StringEscapeUtils.escapeHtml4(Jsoup.parseBodyFragment(rawContent).body().text());
+
 		return CrawledDocBuilder.newCrawledDoc()
 				.withSource("Gmail")
 				.withAuthor(message.getFrom()[0].toString())
 				.withTitle(message.getSubject())
 				.withDate(new DateTime(message.getSentDate()))
-				.withContent(StringEscapeUtils.escapeHtml4(getText(message)))
+				.withContent(content)   // StringEscapeUtils.escapeHtml4(getText(message)))
 				.create();
 	}
 

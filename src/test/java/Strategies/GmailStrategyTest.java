@@ -15,7 +15,7 @@ public class GmailStrategyTest extends TestCase {
 
 		assertThat(docs.get(0).getAuthor().substring(0, 15))
 				.isEqualTo("Equipe do Gmail");
-		//assertThat(docs.get(0).getContent().substring(0, 3))
-		//		.isEqualTo("Olá,");
+//		assertThat(StringEscapeUtils.unescapeHtml4(docs.get(0).getContent().substring(0, 3)))
+//				.isEqualTo("Olá,");
 	}
 }

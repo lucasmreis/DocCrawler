@@ -24,6 +24,8 @@
     <orderEntry type="library" exported="" name="Gradle: rome-1.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jdom-1.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-lang3-3.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mail-1.4.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: activation-1.1" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -85,6 +87,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.mail/mail/1.4.1/805fab433b5ea319373a5dcb133b48633ad898b1/mail-1.4.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.7.3/92568d7167ce1bf9eb1fd815b022d5a2c113547a/jsoup-1.7.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.7.3/b783d347815471821faaa7ae7a4f0d2fec30966e/jsoup-1.7.3-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
