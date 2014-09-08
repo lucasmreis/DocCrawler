@@ -3,10 +3,12 @@ package Strategies;
 import Engines.HtmlEngine;
 import Models.CrawledDoc;
 
-import Models.CrawledDocBuilder;
-import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -25,7 +27,23 @@ public class HtmlStrategy implements IConvertingStrategy {
 	public ArrayList<CrawledDoc> getCrawledDocs() throws Exception {
 		HtmlEngine engine = new HtmlEngine();
 		ArrayList<CrawledDoc> docs = new ArrayList<>();
-		docs.add(engine.getCrawledDoc(this.url));
+		docs.addAll(getCrawledDocsDepth(this.url, this.depth, engine));
+		return docs;
+	}
+
+	private ArrayList<CrawledDoc> getCrawledDocsDepth(String url, int depth, HtmlEngine engine) throws IOException {
+		if (depth < 0) return new ArrayList<>();
+
+		ArrayList<CrawledDoc> docs = new ArrayList<>();
+		docs.add(engine.getCrawledDoc(url));
+
+		if (depth > 0) {
+			Document page = Jsoup.connect(url).get();
+			Elements links = page.select("a[href]");
+			for (Element e : links) {
+				docs.addAll(getCrawledDocsDepth(e.attr("abs:href"), depth - 1, engine));
+			}
+		}
 		return docs;
 	}
 }
