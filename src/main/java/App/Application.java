@@ -25,7 +25,8 @@ public class Application {
 				strategy = new GmailStrategy(args[1], args[2]);
 				break;
 			case "html":
-				strategy = new HtmlStrategy(args[0], args[1]);
+				strategy = new HtmlStrategy(args[1], args[2]);
+				break;
 			default:
 				System.out.println("Invalid source: " + args[0]);
 				return;
@@ -52,8 +53,6 @@ public class Application {
 		{
 			ids.add(db.Add(doc));
 		}
-		// pequeno teste: digitar gradle run -Pargs="file ./ 1"
-		//
 		return ids;
 	}
 }
