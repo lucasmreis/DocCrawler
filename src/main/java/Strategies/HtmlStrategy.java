@@ -41,7 +41,9 @@ public class HtmlStrategy implements IConvertingStrategy {
 			Document page = Jsoup.connect(url).get();
 			Elements links = page.select("a[href]");
 			for (Element e : links) {
-				docs.addAll(getCrawledDocsDepth(e.attr("abs:href"), depth - 1, engine));
+				String href = e.attr("abs:href");
+				if (href.substring(href.length() - 4).equals("html"))
+					docs.addAll(getCrawledDocsDepth(href, depth - 1, engine));
 			}
 		}
 		return docs;

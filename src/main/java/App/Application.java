@@ -27,6 +27,9 @@ public class Application {
 			case "html":
 				strategy = new HtmlStrategy(args[1], args[2]);
 				break;
+			case "twitter":
+				strategy = new TwitterStrategy(args[1]);
+				break;
 			default:
 				System.out.println("Invalid source: " + args[0]);
 				return;
