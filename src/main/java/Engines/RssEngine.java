@@ -11,8 +11,7 @@ import org.joda.time.DateTime;
  * Created by lucasmreis on 9/5/14.
  */
 public class RssEngine {
-	public CrawledDoc getCrawledDoc(SyndEntry entry)
-	{
+	public CrawledDoc getCrawledDoc(SyndEntry entry) {
 		return CrawledDocBuilder.newCrawledDoc()
 				.withSource("Rss Feed")
 				.withAuthor(entry.getAuthor())
@@ -22,3 +21,4 @@ public class RssEngine {
 				.withDate(new DateTime(entry.getPublishedDate()))
 				.create();
 	}
+}
