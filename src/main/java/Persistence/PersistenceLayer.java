@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class PersistenceLayer {
 	public String Add(CrawledDoc doc) throws SQLException, ClassNotFoundException {
 		String dbURL = "jdbc:mysql://localhost:3306/crawler";
-		String username ="newuser";
+		String username = "newuser";
 		String password = "password";
 
 		Connection dbCon;

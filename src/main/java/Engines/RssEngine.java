@@ -22,15 +22,3 @@ public class RssEngine {
 				.withDate(new DateTime(entry.getPublishedDate()))
 				.create();
 	}
-
-//	private String FirstContentValue(ArrayList<SyndContentImpl> contents, String type)
-//	{
-//		String noContents = "< no contents >";
-//		if (contents.isEmpty()) return noContents;
-//		for (SyndContentImpl c : contents)
-//		{
-//			if (c.getType().contains(type)) return c.getValue().toString();
-//		}
-//		return noContents;
-//	}
-}

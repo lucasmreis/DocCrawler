@@ -20,9 +20,6 @@ public class TwitterStrategy implements IConvertingStrategy {
 	public ArrayList<CrawledDoc> getCrawledDocs() throws TwitterException {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-//				.setOAuthAuthorizationURL("https://api.twitter.com/oauth/authorize")
-//				.setOAuthAccessTokenURL("https://api.twitter.com/oauth/access_token")
-//				.setOAuthRequestTokenURL("https://api.twitter.com/oauth/request_token")
 				.setOAuthConsumerKey("JMWYgebyxVxopVQgZPIc42wvE")
 				.setOAuthConsumerSecret("QMXyJMhXuQfi0TPLiPKQLm5rxY2BUQUMaSklO1L5IYrFB7iLCw")
 				.setOAuthAccessToken("2511073098-RKUO3pZzeeapLctVbMGCUm9EQuLCWXtDQqQE7CL")
