@@ -16,8 +16,8 @@ public class RssStrategyTest extends TestCase {
 
 		CrawledDoc firstDoc = docs.get(0);
 
-		assertThat(firstDoc.getTitle()).isEqualTo("How To Turn An RSS Feed Into A Newsletter PDF");
-		assertThat(firstDoc.getLink()).isEqualTo("http://www.rss-specifications.com/blog.htm#1836");
-		assertThat(firstDoc.getDate()).isEqualTo(new DateTime(2014, 8, 12, 9+1, 0, 0)); // + 1 por TimeZone
+		assertThat(firstDoc.getTitle()).isEqualTo("Do CEOs Use Social Media?");
+		assertThat(firstDoc.getLink()).isEqualTo("http://www.rss-specifications.com/blog.htm#1840");
+		assertThat(firstDoc.getDate()).isEqualTo(new DateTime(2014, 9, 19, 9+1, 0, 0)); // + 1 por TimeZone
 	}
 }

@@ -27,6 +27,7 @@
     <orderEntry type="library" exported="" name="Gradle: mail-1.4.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: activation-1.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jsoup-1.7.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: twitter4j-core-4.0.1" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>

@@ -16,6 +16,9 @@ Próximos passos:
 - Terminar FileStrategy (colocar depth, doc e pdf)
 
 
+- Terminar HtmlStrategy (colocar regex)
+
+
 - Testes para TwitterStrategy (mocks?)
 
 

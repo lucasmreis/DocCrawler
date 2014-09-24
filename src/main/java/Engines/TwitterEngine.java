@@ -2,6 +2,7 @@ package Engines;
 
 import Models.CrawledDoc;
 import Models.CrawledDocBuilder;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.joda.time.DateTime;
 import twitter4j.Status;
 
@@ -18,7 +19,7 @@ public class TwitterEngine {
 				.withLink("https://twitter.com/" +
 						status.getUser().getScreenName() + "/status/" +
 						Long.toString(status.getId()))
-				.withContent(status.getText())
+				.withContent(StringEscapeUtils.escapeHtml4(status.getText()))
 				.withDate(new DateTime(status.getCreatedAt()))
 				.create();
 	}
